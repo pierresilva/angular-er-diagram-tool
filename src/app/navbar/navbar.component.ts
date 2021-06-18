@@ -16,7 +16,7 @@ import { ModalDownloadComponent } from '../modal-download/modal-download.compone
 import { ModalUploadComponent } from '../modal-upload/modal-upload.component';
 
 // class
-import { Model }  from '../class/model';
+import { Model } from '../class/model';
 
 @Component({
   selector: 'navbar',
@@ -26,42 +26,48 @@ import { Model }  from '../class/model';
 
 export class NavbarComponent {
 
-  private isCollapsed: boolean = true;
-  private bsModalRef: BsModalRef;
+  public isCollapsed: boolean = true;
+  public bsModalRef: BsModalRef;
 
-  constructor(private bsModalService: BsModalService, private dataService: DataService, private sanitizer: DomSanitizer) {}
+  constructor(private bsModalService: BsModalService, private dataService: DataService, private sanitizer: DomSanitizer) { }
 
-  private createModel():void{
+  private createModel(): void {
     console.log('NavbarComponent.createModel() is called!');
-    this.bsModalRef = this.bsModalService.show( ModalModelComponent, {initialState:{
-      mode: 'create',
-      model: new Model(),
-      use_laravel_auth: this.dataService.data.use_laravel_auth
-    }} );
+    this.bsModalRef = this.bsModalService.show(ModalModelComponent, {
+      initialState: {
+        mode: 'create',
+        model: new Model(),
+        use_laravel_auth: this.dataService.data.use_laravel_auth
+      }
+    });
   }
 
-  private exportJson():void{
+  private exportJson(): void {
     console.log('NavbarComponent.exportJson() is called!');
 
-    var theJSON = JSON.stringify( this.dataService.data, null, '  ' );
-    var uri = this.sanitizer.bypassSecurityTrustUrl( "data:text/json;charset=UTF-8," + encodeURIComponent(theJSON) );
-    this.bsModalRef = this.bsModalService.show( ModalDownloadComponent, {initialState:{
-      uri: uri
-    }} );
+    var theJSON = JSON.stringify(this.dataService.data, null, '  ');
+    var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
+    this.bsModalRef = this.bsModalService.show(ModalDownloadComponent, {
+      initialState: {
+        uri: uri
+      }
+    });
 
   }
 
-  private importJson():void{
+  private importJson(): void {
     console.log('NavbarComponent.importJson() is called!');
-    this.bsModalRef = this.bsModalService.show( ModalUploadComponent );
+    this.bsModalRef = this.bsModalService.show(ModalUploadComponent);
   }
 
-  private dataSetting():void{
+  private dataSetting(): void {
     console.log('NavbarComponent.dataSetting() is called!');
 
-    this.bsModalRef = this.bsModalService.show( ModalDataComponent, {initialState:{
-      data: this.dataService.data
-    }} );
+    this.bsModalRef = this.bsModalService.show(ModalDataComponent, {
+      initialState: {
+        data: this.dataService.data
+      }
+    });
   }
 
 }

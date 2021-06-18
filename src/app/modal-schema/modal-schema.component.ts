@@ -6,7 +6,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { DataService } from '../service/data.service';
 
 // class
-import { Schema }  from '../class/schema';
+import { Schema } from '../class/schema';
 
 @Component({
   selector: 'modal',
@@ -15,17 +15,20 @@ import { Schema }  from '../class/schema';
 
 export class ModalSchemaComponent {
 
+  public parent_model = null;
+  public use_laravel_auth = null;
+
   public mode: string; // create or edit
   public schema: Schema;
-  
-  constructor( private bsModalRef: BsModalRef, private dataService: DataService ) {}
+
+  constructor(public bsModalRef: BsModalRef, public dataService: DataService) { }
 
   ngOnDestroy() {
     console.log('ModalSchemaComponent.ngOnDestroy() is called!');
     this.dataService.flg_repaint = true;
   }
 
-  private create(){
+  public create() {
     console.log('ModalSchemaComponent.create() is called!');
     this.dataService.addSchema(this.schema);
     this.bsModalRef.hide();

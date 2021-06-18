@@ -12,6 +12,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class ModalDownloadComponent {
 
   public uri: SafeUrl; // create or edit
-  
-  constructor( private bsModalRef: BsModalRef ) {}
+
+  constructor(public bsModalRef: BsModalRef) { }
 }
