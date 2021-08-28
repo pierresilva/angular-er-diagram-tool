@@ -23,6 +23,7 @@ import { ModalSchemaComponent } from './modal-schema/modal-schema.component';
 import { ModalRelationComponent } from './modal-relation/modal-relation.component';
 import { ModalDownloadComponent } from './modal-download/modal-download.component';
 import { ModalUploadComponent } from './modal-upload/modal-upload.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ModalUploadComponent } from './modal-upload/modal-upload.component';
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     ModalModule.forRoot(),
+    NgSelectModule
   ],
   providers: [
     DataService,

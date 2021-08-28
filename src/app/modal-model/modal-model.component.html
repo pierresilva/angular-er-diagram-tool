@@ -59,6 +59,17 @@
                [(ngModel)]="model.display_name">
       </div>
     </div>
+    <div class="form-group row">
+      <label for="comment-field"
+             class="col-sm-4 col-form-label text-right">Comment</label>
+      <div class="col-sm-8">
+        <input type="text"
+               class="form-control form-control-sm"
+               id="comment-field"
+               name="comment"
+               [(ngModel)]="model.comment">
+      </div>
+    </div>
     <div class="form-group">
       <div class="col-sm-8 offset-sm-4">
         <div class="form-check form-check-inline">

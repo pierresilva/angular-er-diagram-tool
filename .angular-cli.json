@@ -7,10 +7,7 @@
     {
       "root": "src",
       "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+      "assets": ["assets", "favicon.ico"],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -21,11 +18,10 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/jsplumb/css/jsplumbtoolkit-defaults.css",
+        "../node_modules/@ng-select/ng-select/themes/default.theme.css",
         "styles.css"
       ],
-      "scripts": [
-        "../node_modules/jsplumb/dist/js/jsplumb.min.js"
-      ],
+      "scripts": ["../node_modules/jsplumb/dist/js/jsplumb.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -174,6 +174,13 @@
   dependencies:
     tslib "^1.7.1"
 
+"@ng-select/ng-select@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-1.5.2.tgz#e67115705f991cb44d85983f0fb3b3c6f709c2ee"
+  integrity sha1-5nEVcF+ZHLRNhZg/D7OzxvcJwu4=
+  dependencies:
+    tslib "^1.7.1"
+
 "@ngtools/json-schema@1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ngtools/json-schema/-/json-schema-1.2.0.tgz#06e5ecd29e9a37d260a447dd873ea2becd228c4f"
