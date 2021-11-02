@@ -137,13 +137,28 @@
             <option value="date">date</option>
             <option value="time">time</option>
             <option value="datetime">datetime</option>
+            <option value="toggle">toggle</option>
             <option value="checkbox">checkbox</option>
             <option value="checkboxes">checkboxes</option>
-            <option value="select">select</option>
+            <option value="dropdown">dropdown</option>
+            <option value="select">select (for relations only)</option>
+            <option value="radiobutton">radiobutton</option>
             <option value="file">file</option>
+            <option value="image">image</option>
           </select>
         </ng-template>
 
+      </div>
+    </div>
+    <div class="form-group row" *ngIf="schema.input_type=='select' || schema.input_type=='radiobutton'">
+      <label for="custom_options-field"
+             class="col-sm-4 col-form-label text-right">Custom options</label>
+      <div class="col-sm-8">
+        <input type="text"
+               class="form-control form-control-sm"
+               id="custom_options-field"
+               name="custom_options"
+               [(ngModel)]="schema.custom_options">
       </div>
     </div>
     <div class="form-group row">

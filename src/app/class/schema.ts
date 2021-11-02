@@ -6,6 +6,7 @@ export class Schema {
   public comment: string;
   public type: string;
   public input_type: string;
+  public custom_options: string;
   public varidate: string;
   public faker_type: string;
   public nullable: boolean;
@@ -23,6 +24,7 @@ export class Schema {
       this.comment = schema_data.comment;
       this.type = schema_data.type;
       this.input_type = schema_data.input_type;
+      this.custom_options = schema_data.custom_options;
       this.varidate = schema_data.varidate;
       this.faker_type = schema_data.faker_type;
       this.nullable = schema_data.nullable;
@@ -38,6 +40,7 @@ export class Schema {
       this.comment = '';
       this.type = 'string';
       this.input_type = 'text';
+      this.custom_options = '';
       this.varidate = '';
       this.faker_type = '';
       this.nullable = false;

@@ -11,6 +11,7 @@ export class Model {
   public schemas: Schema[];
   public is_pivot: boolean;
   public schema_id_for_relation: number;
+  public module: any;
   public pos_x: number;
   public pos_y: number;
 
@@ -32,6 +33,7 @@ export class Model {
 
       this.is_pivot = model_data.is_pivot;
       this.schema_id_for_relation = model_data.schema_id_for_relation;
+      this.module = model_data.module;
       this.pos_x = model_data.pos_x;
       this.pos_y = model_data.pos_y;
       this._next_schema_id = model_data._next_schema_id;
@@ -44,6 +46,7 @@ export class Model {
       this.schemas = [];
       this.is_pivot = false;
       this.schema_id_for_relation = 0;
+      this.module = null;
       this.pos_x = 0;
       this.pos_y = 0;
       this._next_schema_id = 1;

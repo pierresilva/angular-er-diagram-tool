@@ -60,7 +60,7 @@ export class ModalSchemaComponent {
     'dateTime("now", "America/Bogota")',
     'date("Y-m-d", "now")',
     'time("H: i: s", "now")',
-    'dateTimeBetween(" - 30 years, "now", "America/Bogota")',
+    'dateTimeBetween("- 30 years", "now", "America/Bogota")',
     'email',
     'safeEmail',
     'freeEmail',
