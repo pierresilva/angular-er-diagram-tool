@@ -150,6 +150,7 @@
 
       </div>
     </div>
+
     <div class="form-group row" *ngIf="schema.input_type=='select' || schema.input_type=='radiobutton'">
       <label for="custom_options-field"
              class="col-sm-4 col-form-label text-right">Custom options</label>
@@ -161,6 +162,7 @@
                [(ngModel)]="schema.custom_options">
       </div>
     </div>
+
     <div class="form-group row">
       <label for="varidate-field"
              class="col-sm-4 col-form-label text-right">Varidate</label>

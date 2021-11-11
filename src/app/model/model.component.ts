@@ -28,7 +28,12 @@ export class ModelComponent {
 
   public bsModalRef: BsModalRef;
 
-  constructor(private bsModalService: BsModalService, private dataService: DataService, private jsPlumbService: JsPlumbService, private el: ElementRef) { }
+  constructor(
+    private bsModalService: BsModalService,
+    private dataService: DataService,
+    private jsPlumbService: JsPlumbService,
+    private el: ElementRef
+  ) { }
 
   ngAfterViewInit() {
     console.log('ModelComponent(' + this.myModel.id + ').ngAfterViewInit() is called!');
@@ -47,7 +52,8 @@ export class ModelComponent {
         mode: 'edit',
         model: this.myModel,
         use_laravel_auth: this.dataService.data.use_laravel_auth
-      }
+      },
+      ignoreBackdropClick: true
     });
   }
 
@@ -71,7 +77,8 @@ export class ModelComponent {
         schema: schema,
         use_laravel_auth: this.dataService.data.use_laravel_auth,
         parent_model: this.myModel
-      }
+      },
+      ignoreBackdropClick: true
     });
   }
 

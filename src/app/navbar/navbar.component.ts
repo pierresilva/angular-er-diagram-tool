@@ -38,7 +38,8 @@ export class NavbarComponent {
         mode: 'create',
         model: new Model(),
         use_laravel_auth: this.dataService.data.use_laravel_auth
-      }
+      },
+      ignoreBackdropClick: true
     });
   }
 
@@ -50,14 +51,17 @@ export class NavbarComponent {
     this.bsModalRef = this.bsModalService.show(ModalDownloadComponent, {
       initialState: {
         uri: uri
-      }
+      },
+      ignoreBackdropClick: true
     });
 
   }
 
   private importJson(): void {
     console.log('NavbarComponent.importJson() is called!');
-    this.bsModalRef = this.bsModalService.show(ModalUploadComponent);
+    this.bsModalRef = this.bsModalService.show(ModalUploadComponent, {
+      ignoreBackdropClick: true
+    });
   }
 
   private dataSetting(): void {
@@ -66,7 +70,8 @@ export class NavbarComponent {
     this.bsModalRef = this.bsModalService.show(ModalDataComponent, {
       initialState: {
         data: this.dataService.data
-      }
+      },
+      ignoreBackdropClick: true
     });
   }
 

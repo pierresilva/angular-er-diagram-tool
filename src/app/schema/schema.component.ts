@@ -49,7 +49,8 @@ export class SchemaComponent {
         schema: this.mySchema,
         use_laravel_auth: this.dataService.data.use_laravel_auth,
         parent_model: this.dataService.data.getModelById(this.mySchema.parent_id)
-      }
+      },
+      ignoreBackdropClick: true
     });
   }
 
