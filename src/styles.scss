@@ -1,10 +1,11 @@
-@import"~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
 html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 100px;
@@ -12,33 +13,77 @@ body {
 
 /* .material-icons */
 
-.material-icons{
-    cursor:pointer;
-    width:12.813px;
+.material-icons {
+  cursor: pointer;
+  width: 12.813px;
 }
-.material-icons.disable{
-    cursor:default;
-    opacity: 0.3;
+
+.material-icons.disable {
+  cursor: default;
+  opacity: 0.3;
 }
 
 /* #canvas */
-#canvas{
-    position:relative;
+#canvas {
+  position: relative;
 }
-#canvas .model-node{
-    position:absolute;
+
+#canvas .model-node {
+  position: absolute;
+  opacity: 0.8;
 }
-#canvas .model-node:hover{
-    opacity: 0.6;
+
+#canvas .model-node:hover {
+  opacity: 1;
 }
-#canvas .model-node *{
-    font-size: 0.8rem;
+
+#canvas .model-node * {
+  font-size: 0.8rem;
 }
-#canvas .model-node h2{
-    cursor:move;
+
+#canvas .model-node h2 {
+  cursor: move;
 }
-#canvas .model-default-endpoint{
-    z-index: 6;
+
+#canvas .model-default-endpoint {
+  z-index: 6;
+}
+.jtk-overlay {
+  display: none;
+  background-color: #EEEEEEa5;
+  padding: 4px;
+  border-radius: 4px;
+  &.jtk-hover {
+    display: block;
+  }
+}
+
+.jtk-endpoint {
+  opacity: 0.3;
+  &.jtk-hover {
+    opacity: 1;
+  }
+}
+
+.jtk-connector {
+  opacity: 0.3;
+  &.jtk-hover{
+    opacity: 1;
+  }
+}
+
+.jtk-hover {
+  z-index: 19;
+  path {
+    stroke: orange;
+    stroke-widht: 2px;
+  }
+  svg {
+    circle {
+      stroke: orange;
+      fill: orange;
+    }
+  }
 }
 
 /* Sticky footer styles
@@ -66,15 +111,19 @@ body {
 .mr-1 {
   margin-right: 4px;
 }
+
 .mr-2 {
   margin-right: 8px;
 }
+
 .mr-3 {
   margin-right: 12px;
 }
+
 .mr-4 {
   margin-right: 16px;
 }
+
 .mr-auto {
   margin-right: auto;
 }
@@ -82,15 +131,19 @@ body {
 .ml-1 {
   margin-left: 4px;
 }
+
 .ml-2 {
   margin-left: 8px;
 }
+
 .ml-3 {
   margin-left: 12px;
 }
+
 .ml-4 {
   margin-left: 16px;
 }
+
 .ml-auto {
   margin-left: auto;
 }

@@ -55,4 +55,6 @@ export class Schema {
   public getElementId(): string {
     return 'model' + this.parent_id + '-schema' + this.id;
   }
+
+
 }

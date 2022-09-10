@@ -111,7 +111,13 @@ export class JsPlumbService {
       var target_id = schema.getElementId();
       var option = {
         source: source_id,
-        target: target_id
+        target: target_id,
+        connector: "StateMachine",
+        paintStyle:{ stroke: "#456", strokeWidth: 2 },
+        overlays:[
+          // @ts-ignore
+          [ "Label", { label: '<div class="text-center">' + this.dataService.data?.getModelByName(schema?.belongsto)?.name + '<br>' + this.dataService.data?.getModelById(schema?.parent_id)?.name + '</div>', id: source_id + '_' + target_id } ]
+        ]
       };
       if (this._instance.getConnections(option).length === 0) {
         this._instance.connect(option);
@@ -128,10 +134,10 @@ export class JsPlumbService {
     console.log('JsPlumbService.destroySchema() is called!');
 
     if (schema.belongsto) {
-      var option = {
+      const option = {
         target: schema.getElementId()
       };
-      var connections_to_delete = this._instance.getConnections(option);
+      const connections_to_delete = this._instance.getConnections(option);
       for (let i = 0; i < connections_to_delete.length; i++) {
         this._instance.deleteConnection(connections_to_delete[i]);
       }
