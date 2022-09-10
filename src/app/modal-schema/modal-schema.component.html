@@ -1,0 +1,341 @@
+<div class="modal-header">
+  <h5 class="modal-title"
+      *ngIf="mode == 'create'">Create Schema</h5>
+  <h5 class="modal-title"
+      *ngIf="mode == 'edit'">Edit Schema</h5>
+  <button type="button"
+          class="btn-close"
+          (click)="modalService.hide()"
+          aria-label="Close"></button>
+</div>
+<div class="modal-body">
+
+  <form>
+    <div class="form-group row">
+      <label for="name-field"
+             class="col-sm-4 col-form-label text-right">Name</label>
+      <div class="col-sm-8 mb-2">
+
+        <ng-container
+                      *ngIf="use_laravel_auth && mode==='edit' && parent_model.name=='user' && ( schema.name=='name' || schema.name=='email' || schema.name=='password'); then laravelAuth_name; else notLaravelAuth_name">
+        </ng-container>
+        <ng-template #laravelAuth_name>
+          <input type="text"
+                 class="form-control form-control"
+                 id="name-field"
+                 name="name"
+                 [(ngModel)]="schema.name"
+                 readonly>
+          <small id="nameHelp"
+                 class="form-text text-muted">unable to change. This is for Laravel auth.</small>
+        </ng-template>
+        <ng-template #notLaravelAuth_name>
+          <input type="text"
+                 class="form-control form-control"
+                 id="name-field"
+                 name="name"
+                 [(ngModel)]="schema.name"
+                 autofocus>
+          <small id="nameHelp"
+                 class="form-text text-muted">Input schema name with singular camelCase.</small>
+        </ng-template>
+
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="display_name-field"
+             class="col-sm-4 col-form-label text-right">Display name</label>
+      <div class="col-sm-8 mb-2">
+        <input type="text"
+               class="form-control form-control"
+               id="display_name-field"
+               name="display_name"
+               [(ngModel)]="schema.display_name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="comment-field"
+             class="col-sm-4 col-form-label text-right">Comment</label>
+      <div class="col-sm-8 mb-2">
+        <input type="text"
+               class="form-control form-control"
+               id="comment-field"
+               name="comment"
+               [(ngModel)]="schema.comment">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="type-field"
+             class="col-sm-4 col-form-label text-right">Type</label>
+      <div class="col-sm-8 mb-2">
+
+        <ng-container
+                      *ngIf="use_laravel_auth && mode==='edit' && parent_model.name=='user' && ( schema.name=='name' || schema.name=='email' || schema.name=='password'); then laravelAuth_type; else notLaravelAuth_type">
+        </ng-container>
+        <ng-template #laravelAuth_type>
+          <input type="text"
+                 class="form-control form-control"
+                 id="type-field"
+                 name="type"
+                 [(ngModel)]="schema.type"
+                 readonly>
+          <small id="typeHelp"
+                 class="form-text text-muted">unable to change. This is for Laravel auth.</small>
+        </ng-template>
+        <ng-template #notLaravelAuth_type>
+          <select id="type-field"
+                  name="type"
+                  class="form-control form-control"
+                  [(ngModel)]="schema.type">
+            <option value="string" selected>string</option>
+            <option value="text">text</option>
+            <option value="longtext">longtext</option>
+            <option value="integer">integer</option>
+            <option value="float">float</option>
+            <option value="date">date</option>
+            <option value="time">time</option>
+            <option value="datetime">datetime</option>
+            <option value="timestamp">timestamp</option>
+            <option value="boolean">boolean</option>
+          </select>
+        </ng-template>
+
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="input_type-field"
+             class="col-sm-4 col-form-label text-right">Input Type</label>
+      <div class="col-sm-8 mb-2">
+
+        <ng-container
+                      *ngIf="use_laravel_auth && mode==='edit' && parent_model.name=='user' && ( schema.name=='name' || schema.name=='email' || schema.name=='password'); then laravelAuth_input_type; else notLaravelAuth_input_type">
+        </ng-container>
+        <ng-template #laravelAuth_input_type>
+          <input type="text"
+                 class="form-control form-control"
+                 id="input_type-field"
+                 name="input_type"
+                 [(ngModel)]="schema.input_type"
+                 readonly>
+          <small id="input_typeHelp"
+                 class="form-text text-muted">unable to change. This is for Laravel auth.</small>
+        </ng-template>
+        <ng-template #notLaravelAuth_input_type>
+          <select id="input_type-field"
+                  name="input_type"
+                  class="form-control form-control"
+                  [(ngModel)]="schema.input_type">
+            <option value="text">text</option>
+            <option value="textarea">textarea</option>
+            <option value="password">password</option>
+            <option value="email">email</option>
+            <option value="html">html</option>
+            <option value="number">number</option>
+            <option value="date">date</option>
+            <option value="time">time</option>
+            <option value="datetime">datetime</option>
+            <option value="toggle">toggle</option>
+            <option value="checkbox">checkbox</option>
+            <option value="checkboxes">checkboxes</option>
+            <option value="dropdown">dropdown</option>
+            <option value="select">select (for relations only)</option>
+            <option value="radiobutton">radiobutton</option>
+            <option value="file">file</option>
+            <option value="image">image</option>
+          </select>
+        </ng-template>
+
+      </div>
+    </div>
+
+    <div class="form-group row" *ngIf="schema.input_type=='select' || schema.input_type=='radiobutton'">
+      <label for="custom_options-field"
+             class="col-sm-4 col-form-label text-right">Custom options</label>
+      <div class="col-sm-8 mb-2">
+        <input type="text"
+               class="form-control form-control"
+               id="custom_options-field"
+               name="custom_options"
+               [(ngModel)]="schema.custom_options">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="varidate-field"
+             class="col-sm-4 col-form-label text-right">Varidate</label>
+      <div class="col-sm-8 mb-2">
+        <input type="text"
+               class="form-control form-control"
+               id="varidate-field"
+               name="varidate"
+               [(ngModel)]="schema.varidate">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="faker_type-field"
+             class="col-sm-4 col-form-label right">Faker Type</label>
+      <div class="col-sm-8 mb-2">
+        <input type="text"
+               class="form-control form-control mb-1"
+               id="faker_type-field"
+               name="faker_type"
+               [(ngModel)]="schema.faker_type">
+        <ng-select [items]="fakerTypes"
+                   id="faker_type-select"
+                   name="faker_type_select"
+                   [(ngModel)]="schema.faker_type">
+        </ng-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-8 mb-2 offset-sm-4">
+
+        <ng-container
+                      *ngIf="use_laravel_auth && mode==='edit' && parent_model.name=='user' && ( schema.name=='name' || schema.name=='email' || schema.name=='password'); then laravelAuth_nullable; else notLaravelAuth_nullable">
+        </ng-container>
+        <ng-template #laravelAuth_nullable>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="checkbox"
+                   name="nullable"
+                   value="true"
+                   [(ngModel)]="schema.nullable"
+                   disabled="disabled">
+            <label class="form-check-label">nullable</label>
+            <input type="hidden"
+                   name="nullable"
+                   value="true"
+                   [(ngModel)]="schema.nullable" />
+          </div>
+          <small id="input_typeHelp"
+                 class="form-text text-muted">unable to change. This is for Laravel auth.</small>
+        </ng-template>
+        <ng-template #notLaravelAuth_nullable>
+          <ng-container
+                        *ngIf="use_laravel_auth && parent_model.name=='user'; then laravelAuth_nullable_a; else notLaravelAuth_nullable_a">
+          </ng-container>
+        </ng-template>
+        <ng-template #laravelAuth_nullable_a>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="checkbox"
+                   name="nullable"
+                   value="true"
+                   checked="checked">
+            <label class="form-check-label">nullable</label>
+            <input type="hidden"
+                   name="nullable"
+                   value="true" />
+          </div>
+          <small id="input_typeHelp"
+                 class="form-text text-muted">unable to change nullable for Laravel auth user model schema.</small>
+        </ng-template>
+        <ng-template #notLaravelAuth_nullable_a>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="nullable-field"
+                   name="nullable"
+                   value="true"
+                   [(ngModel)]="schema.nullable">
+            <label class="form-check-label">nullable</label>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-8 mb-2 offset-sm-4">
+
+        <ng-container
+                      *ngIf="use_laravel_auth && parent_model.name=='user' && ( schema.name=='name' || schema.name=='email' || schema.name=='password'); then laravelAuth_unique; else notLaravelAuth_unique">
+        </ng-container>
+        <ng-template #laravelAuth_unique>
+          <div class="form-check form-check-inline">
+              <input type="checkbox"
+                     class="form-check-input"
+                     id="unique-field"
+                     name="unique"
+                     value="true"
+                     [(ngModel)]="schema.unique"
+                     disabled="disabled">
+            <label class="form-check-label">unique</label>
+            <input type="hidden"
+                   name="unique"
+                   value="true"
+                   [(ngModel)]="schema.unique" />
+          </div>
+          <small id="input_typeHelp"
+                 class="form-text text-muted">unable to change. This is for Laravel auth.</small>
+        </ng-template>
+        <ng-template #notLaravelAuth_unique>
+          <ng-container *ngIf="parent_model?.is_pivot==true; then pivot_unique; else notPivot_unique"></ng-container>
+        </ng-template>
+        <ng-template #pivot_unique>
+          <div class="form-check form-check-inline">
+              <input type="checkbox"
+                     class="form-check-input"
+                     id="unique-field"
+                     name="unique"
+                     value="false"
+                     disabled="disabled">
+            <label class="form-check-label">unique</label>
+            <input type="hidden"
+                   name="unique"
+                   value="false" />
+          </div>
+          <small id="input_typeHelp"
+                 class="form-text text-muted">unable to use unique for pivot model schemas</small>
+        </ng-template>
+        <ng-template #notPivot_unique>
+          <div class="form-check form-check-inline">
+            <input type="checkbox"
+                     class="form-check-input"
+                     id="unique-field"
+                     name="unique"
+                     value="true"
+                     [(ngModel)]="schema.unique">
+            <label class="form-check-label">unique</label>
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-8 mb-2 offset-sm-4">
+        <div class="form-check form-check-inline">
+          <input type="checkbox"
+                   class="form-check-input"
+                   id="show_in_list-field"
+                   name="show_in_list"
+                   value="true"
+                   [(ngModel)]="schema.show_in_list">
+          <label class="form-check-label" for="show_in_list-field">show in list</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="checkbox"
+                   class="form-check-input"
+                   id="show_in_detail-field"
+                   name="show_in_detail"
+                   value="true"
+                   [(ngModel)]="schema.show_in_detail">
+          <label class="form-check-label" for="show_in_detail-field">show in detail</label>
+        </div>
+      </div>
+    </div>
+    <input type="hidden"
+           name="parent_id"
+           [(ngModel)]="schema.parent_id">
+  </form>
+
+</div>
+<div class="modal-footer"
+     *ngIf="mode == 'create'">
+  <button type="button"
+          class="btn btn-primary"
+          (click)="create()">Create</button>
+  <button type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          (click)="modalService.hide()">Close</button>
+</div>

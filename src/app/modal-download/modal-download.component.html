@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <h5 class="modal-title">Download JSON</h5>
+  <button type="button"
+          class="btn-close"
+          (click)="modalService.hide()"
+          aria-label="Close"></button>
+</div>
+<div class="modal-footer">
+  <a [href]="uri" class="btn btn-primary" download="crud-d-scaffold.json" (click)="modalService.hide()">Download JSON</a>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalService.hide()">Close</button>
+</div>

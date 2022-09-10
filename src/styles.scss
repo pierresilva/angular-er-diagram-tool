@@ -1,1 +1,105 @@
-/* You can add global styles to this file, and also import other style files */
+@import"~bootstrap/scss/bootstrap";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 100px;
+}
+
+/* .material-icons */
+
+.material-icons{
+    cursor:pointer;
+    width:12.813px;
+}
+.material-icons.disable{
+    cursor:default;
+    opacity: 0.3;
+}
+
+/* #canvas */
+#canvas{
+    position:relative;
+}
+#canvas .model-node{
+    position:absolute;
+}
+#canvas .model-node:hover{
+    opacity: 0.6;
+}
+#canvas .model-node *{
+    font-size: 0.8rem;
+}
+#canvas .model-node h2{
+    cursor:move;
+}
+#canvas .model-default-endpoint{
+    z-index: 6;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 100px;
+  line-height: 100px; /* Vertically center the text there */
+  background-color: #FFF;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.mr-1 {
+  margin-right: 4px;
+}
+.mr-2 {
+  margin-right: 8px;
+}
+.mr-3 {
+  margin-right: 12px;
+}
+.mr-4 {
+  margin-right: 16px;
+}
+.mr-auto {
+  margin-right: auto;
+}
+
+.ml-1 {
+  margin-left: 4px;
+}
+.ml-2 {
+  margin-left: 8px;
+}
+.ml-3 {
+  margin-left: 12px;
+}
+.ml-4 {
+  margin-left: 16px;
+}
+.ml-auto {
+  margin-left: auto;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.right {
+  text-align: right;
+}
+

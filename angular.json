@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/jsplumb/css/jsplumbtoolkit-defaults.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jsplumb/dist/js/jsplumb.min.js"
+            ]
           },
           "configurations": {
             "production": {

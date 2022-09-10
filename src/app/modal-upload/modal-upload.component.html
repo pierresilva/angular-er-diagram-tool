@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h5 class="modal-title">Upload JSON</h5>
+  <button type="button"
+          class="btn-close"
+          (click)="modalService.hide()"
+          aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <input type="file" (change)="onFileSelected($event)" accept=".json">
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="uploadJson()" [disabled]="!_flg_file_loaded">Upload JSON</button>
+  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalService.hide()">Close</button>
+</div>
